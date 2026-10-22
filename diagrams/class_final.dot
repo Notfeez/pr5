@@ -1,0 +1,22 @@
+digraph C {
+graph [rankdir=LR, bgcolor="white", pad=0.2, nodesep=0.35, ranksep=0.8];
+node [shape=plaintext, fontname="Times New Roman", fontsize=10];
+edge [fontname="Times New Roman", fontsize=9, color="#555555", arrowhead=vee, style=dashed];
+m [label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="4" COLOR="#2F5597" BGCOLOR="#F7FBFF">
+<TR><TD><B>Main</B></TD></TR><HR/>
+<TR><TD ALIGN="LEFT">&#160;</TD></TR><HR/>
+<TR><TD ALIGN="LEFT">+ main(String[]) void</TD></TR></TABLE>>];
+s [label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="4" COLOR="#2F5597" BGCOLOR="#F7FBFF">
+<TR><TD><B>SelfCheck</B></TD></TR><HR/>
+<TR><TD ALIGN="LEFT">- failed int</TD></TR><HR/>
+<TR><TD ALIGN="LEFT">+ main(String[]) void<BR ALIGN="LEFT"/>- check(String, boolean) void<BR ALIGN="LEFT"/>- expectError(String, String, String) void<BR ALIGN="LEFT"/></TD></TR></TABLE>>];
+a [label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="4" COLOR="#2F5597" BGCOLOR="#F7FBFF">
+<TR><TD><B>TimesheetAnalyzer</B></TD></TR><HR/>
+<TR><TD ALIGN="LEFT">&#160;</TD></TR><HR/>
+<TR><TD ALIGN="LEFT">+ parseHours(String) int[]<BR ALIGN="LEFT"/>- parseValue(String, int) int<BR ALIGN="LEFT"/>+ total(int[]) int<BR ALIGN="LEFT"/>+ average(int[]) double<BR ALIGN="LEFT"/>+ overtimeDays(int[]) int<BR ALIGN="LEFT"/>+ weeklyOvertime(int[]) int<BR ALIGN="LEFT"/>+ buildReport(String) String<BR ALIGN="LEFT"/></TD></TR></TABLE>>];
+r [label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="4" COLOR="#2F5597" BGCOLOR="#F7FBFF">
+<TR><TD><B>TimesheetRules</B><BR/>«константы»</TD></TR><HR/>
+<TR><TD ALIGN="LEFT">+ DAYS_COUNT = 5<BR ALIGN="LEFT"/>+ MIN_HOURS = 0<BR ALIGN="LEFT"/>+ MAX_HOURS = 16<BR ALIGN="LEFT"/>+ DAILY_NORM = 8<BR ALIGN="LEFT"/>+ WEEKLY_NORM = 35<BR ALIGN="LEFT"/></TD></TR><HR/>
+<TR><TD ALIGN="LEFT">&#160;</TD></TR></TABLE>>];
+m -> a; s -> a; a -> r;
+}

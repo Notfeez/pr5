@@ -1,0 +1,29 @@
+digraph G {
+graph [rankdir=TB, bgcolor="white", pad=0.2, nodesep=0.3, ranksep=0.35];
+node [shape=box, style="rounded,filled", fontname="Times New Roman", fontsize=11, color="#2F5597", fillcolor="#EAF2F8", margin="0.12,0.08"];
+edge [fontname="Times New Roman", fontsize=9, color="#555555"];
+start [label="Начало", shape=oval, fillcolor="#E2F0D9", color="#548235"];
+end [label="Завершение", shape=oval, fillcolor="#FCE4D6", color="#C65911"];
+n1 [label="Получить строку часов", shape=parallelogram, fillcolor="#E4DFEC", color="#7030A0"];
+n2 [label="Разделить строку: split(\";\", -1)"];
+n3 [label="Ровно пять значений?", shape=diamond, fillcolor="#FFF2CC", color="#BF9000"];
+i0 [label="i = 0"];
+c1 [label="i < 5?", shape=diamond, fillcolor="#FFF2CC", color="#BF9000"];
+p1 [label="Убрать пробелы (trim) и\nпреобразовать parts[i] в int"];
+c2 [label="Значение целое и\nв диапазоне 0..16?", shape=diamond, fillcolor="#FFF2CC", color="#BF9000"];
+p2 [label="hours[i] = значение;\ni++"];
+n6 [label="Вычислить сумму, среднее,\nдни с переработкой (> 8 ч) и\nнедельную переработку max(0, сумма - 35)"];
+n7 [label="Сформировать итоговый отчёт:\nсумма, среднее, дни, переработка"];
+n8 [label="Сформировать сообщение об ошибке\n(с номером позиции)"];
+start -> n1; n1 -> n2; n2 -> n3;
+n3 -> i0 [label="да"];
+n3 -> n8 [label="нет"];
+i0 -> c1;
+c1 -> p1 [label="да"];
+p1 -> c2;
+c2 -> p2 [label="да"];
+p2 -> c1;
+c2 -> n8 [label="нет"];
+c1 -> n6 [label="нет"];
+n6 -> n7; n7 -> end; n8 -> end;
+}
